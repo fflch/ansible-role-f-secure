@@ -1,0 +1,21 @@
+- name: Adiciona arquitetura i386
+  shell: "dpkg --add-architecture i386"
+
+- name: install dependencies
+  apt:
+    name: "{{ item }}"
+    state: latest
+    update_cache: yes
+  with_items:
+    - libstdc++6:i386
+
+- name: Download FSPMS Package
+  get_url:
+    url: https://download.f-secure.com/corpro/pm_linux/pm_linux15.10/fspms_15.10.94031_amd64.deb
+    url: https://download.f-secure.com/corpro/pm_linux/pm_linux15.30/fspms_15.30.96312_amd64.deb
+    dest: /fspms_15.30.96312_amd64.deb
+    mode: 0440
+
+- name: Install FSPMS Package
+  apt:
+    deb: /fspms_15.30.96312_amd64.deb

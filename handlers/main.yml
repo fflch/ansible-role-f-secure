@@ -1,0 +1,6 @@
+---
+- name: restart fsaua
+  service: name=fsaua state=restarted
+
+- name: restart fspms
+  service: name=fspms state=restarted
