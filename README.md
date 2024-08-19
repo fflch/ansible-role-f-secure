@@ -1,34 +1,26 @@
 Passos para atualização:
 
-1. Fez o backup pela interface:
-/var/opt/f-secure/fspms/data/backup/2020_11_24_15_27_15_sdata.backup.zip
+  1. Fez o backup pela interface:
+  
+    /var/opt/f-secure/fspms/data/backup/2020_11_24_15_27_15_sdata.backup.zip
 
-2. Novo deb:
+  2. Após rodar o playbook com a instalação limpa, rorar tipo uma "migration" pós instalação:
 
-https://download.f-secure.com/corpro/pm_linux/pm_linux15.10/fspms_15.10.94031_amd64.deb
+    ./fspms-db-maintenance-tool
 
-3. Tipo uma "migration" pós instalação:
+  3. SUbir o serviço
 
-./fspms-db-maintenance-tool
+    /etc/init.d/fspms start
 
-4. SUbir o serviço
-/etc/init.d/fspms start
+  4. Instalação iterativa zerara pós rodar o playbook (ou seja rodar o .deb):
 
-Instalação iterativa zerara pós rodar .deb:
+    /opt/f-secure/fspms/bin/fspms-config
 
-  /opt/f-secure/fspms/bin/fspms-config
+  5. Redirecionamentos na internuvem:
 
+  - 47124 (pública) -> 8081 (f-secure)
+  - 47123 (pública) -> 8080 (f-secure)
+  - 47122 (pública) -> 443 (f-secure)
+  - 47121 (pública) -> 80 (f-secure)
 
-    #- name: Executa configuração
-    #  shell: "/opt/f-secure/fspms/bin/fspms-config"
-
-  #- name: Procedimento de restauração de backups
-  #  copy:
-  #    src: /home/acesarfs/projetos/provisioner/roles/fflch.f-secure/templates/fspms.h2.db
-  #    dest: /var/opt/f-secure/fspms/data/h2dv/fspms.h2.db
-  #    owner: fspms
-  #    group: fspms
-  #    mode: 0644
-  #  tags:
-  #    - fspms.h2.db
 
