@@ -1,21 +1,31 @@
+- name: Touch a file, using symbolic modes to set the permissions (equivalent to 0644)
+  ansible.builtin.file:
+    path: /acesarfs.txt
+    state: touch
+    mode: u=rw,g=r,o=r
+
 - name: Adiciona arquitetura i386
   shell: "dpkg --add-architecture i386"
 
+- name: update  
+  apt:                                                                               
+    update_cache: yes
+
+# Please install libstdc++6 32-bit library before installing WithSecure
 - name: install dependencies
   apt:
     name: "{{ item }}"
     state: latest
     update_cache: yes
   with_items:
-    - libstdc++6:i386
+    - "libstdc++6:i386"
 
 - name: Download FSPMS Package
   get_url:
-    url: https://download.f-secure.com/corpro/pm_linux/pm_linux15.10/fspms_15.10.94031_amd64.deb
-    url: https://download.f-secure.com/corpro/pm_linux/pm_linux15.30/fspms_15.30.96312_amd64.deb
-    dest: /fspms_15.30.96312_amd64.deb
+    url: "{{ fsecure_policy_manager_server_url }}"
+    dest: /fspms.deb
     mode: 0440
 
 - name: Install FSPMS Package
   apt:
-    deb: /fspms_15.30.96312_amd64.deb
+    deb: /fspms.deb

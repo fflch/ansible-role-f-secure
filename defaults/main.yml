@@ -1,3 +1,5 @@
 ---
 # defaults file for fileserver
 
+fsecure_policy_manager_server_url: "https://download.withsecure.com/corpro/pm_linux/pm_linux16.02/wspms_16.02.98349_amd64.deb"
+
