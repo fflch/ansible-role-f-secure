@@ -1,13 +1,7 @@
-### Se for uma instalação "do zero":
-
-  1. Instalação iterativa zerara pós rodar o playbook (ou seja rodar o .deb):
-
-    /opt/f-secure/fspms/bin/fspms-config
- 
 ### Se for uma migração de outra versão (ARRUMAR):
- 
+
   1. Faz o backup pela interface na máquina antiga:
-  
+
     /var/opt/f-secure/fspms/data/backup/2020_11_24_15_27_15_sdata.backup.zip
 
   2. Após rodar o playbook com a instalação limpa, rodar tipo uma "migration" pós instalação:
@@ -37,6 +31,6 @@ Redirecionamentos das portas na internuvem:
 
     sudo /opt/f-secure/fspmc/fspmc
 
-3. Usuário padrão é admin
+3. Usuário padrão é admin e a senha está definida no playbook
 
 
