@@ -18,7 +18,12 @@
   4. Subir o serviço
 
     systemctl start fspms
-    
+
+  5. Exportar as chaves no servidor antigo e importar no novo:
+
+    No Antigos: Tools -> Server Configuration -> Keys-> Export
+    No Novo: Tools -> Server Configuration -> Keys-> Replace
+       
 ### Extra
 
 Redirecionamentos das portas na internuvem:
