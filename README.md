@@ -4,14 +4,21 @@
 
     /var/opt/f-secure/fspms/data/backup/2024_08_25_23_01_04.backup.zip
 
-  2. Após rodar o playbook com a instalação limpa, rodar tipo uma "migration" pós instalação:
+  2. Parar o serviço
 
-    ./fspms-db-maintenance-tool
+    systemctl stop fspms
+    
+  3. Copiar o arquivo do backup fspms.h2.db para /var/opt/f-secure/fspms/data/h2db/fspms.h2.db:
 
-  3. Subir o serviço
+    rm /var/opt/f-secure/fspms/data/h2db/fspms.h2.db
+    cp fspms.h2.db /var/opt/f-secure/fspms/data/h2db/fspms.h2.db
+    chown fspms: fspms.h2.db
+    chmod 660 fspms.h2.db
 
-    /etc/init.d/fspms start
+  4. Subir o serviço
 
+    systemctl start fspms
+    
 ### Extra
 
 Redirecionamentos das portas na internuvem:
