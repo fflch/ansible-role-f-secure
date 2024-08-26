@@ -2,7 +2,7 @@
 
   1. Faz o backup pela interface na máquina antiga:
 
-    /var/opt/f-secure/fspms/data/backup/2020_11_24_15_27_15_sdata.backup.zip
+    /var/opt/f-secure/fspms/data/backup/2024_08_25_23_01_04.backup.zip
 
   2. Após rodar o playbook com a instalação limpa, rodar tipo uma "migration" pós instalação:
 
